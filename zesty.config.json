@@ -1,0 +1,13 @@
+{
+         "instance_zuid": "8-fcddf1dcee-30w9nz",
+         "stage": "https://mkw027zd-dev.webengine.zesty.io",
+         "production": "http://modulematerialui.zesty.dev", 
+         "stage_password": "f4ca1f",
+         "src_dir": "",
+         "options": {
+           "skip_config_overwrite": false, 
+           "model_ignore_list": [
+             "6-xyz" 
+           ]
+         }
+     }
