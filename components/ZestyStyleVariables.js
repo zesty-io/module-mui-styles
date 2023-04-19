@@ -1,71 +1,86 @@
 import React from 'react';
 import { createTheme } from '@mui/material/styles';
-let zestyURL =
-  process.env.PRODUCTION == 'true'
-    ? process.env.zesty.production
-    : process.env.zesty.stage;
+import { style } from '@mui/system';
+import { blue } from '@mui/material/colors';
+var styles = require('.zesty/styleVariables') || {};
+console.log(styles['font-family-base']);
 
-console.log(zestyURL);
+// Typography defaults
 
-const ZestyStyleVariables = () => {
-  const fetchZestyStyles = async (uri, setFunc) => {
-    try {
-      const res = await fetch(uri).then((response) =>
-        response.json().then((data) => !!data && setzestyStyles(data)),
-      );
+//Headings
+const headingsColor = styles['headings-color'];
+const headingFontWeight = style['headings-font-weight'];
 
-      return res;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const uri = `${zestyURL}/style-variables.json?zpw=${process.env.zesty.stage_password}`;
-  const [zestyStyles, setzestyStyles] = React.useState([]);
-
-  // console.log(zestyURL);
-  // get data in initial load
-  React.useEffect(() => {
-    fetchZestyStyles(uri, setzestyStyles);
-  }, []);
-
+export default function ZestyStyleVariables() {
   const ZestySettingsTheme = createTheme({
     palette: {
       primary: {
-        main: `#${zestyStyles?.primary}`,
+        main: `${styles['brand-primary'] || '#42a5f5'}`,
       },
       secondary: {
-        main: `#${zestyStyles?.secondary}`,
+        main: `${styles['gray-base'] || '#ab47bc'}`,
       },
       success: {
-        main: `#${zestyStyles?.success}`,
+        main: `${styles['brand-success'] || '#388e3c'}`,
       },
       info: {
-        main: `#${zestyStyles?.info}`,
+        main: `${styles['brand-info'] || '#0288d1'}`,
       },
       warning: {
-        main: `#${zestyStyles?.warning}`,
+        main: `${styles['brand-warning'] || '#f57c00'}`,
       },
-      danger: {
-        main: `#${zestyStyles?.danger}`,
-      },
-      light: {
-        main: `#${zestyStyles?.light}`,
+      error: {
+        main: `${styles['brand-danger'] || '#d32f2f'}`,
       },
       dark: {
-        main: `#${zestyStyles?.dark}`,
+        main: blue[500],
       },
     },
     typography: {
       // In Chinese and Japanese the characters are usually larger,
       // so a smaller fontsize may be appropriate.
-      fontSize: zestyStyles?.fontSize,
-      fontFamily: zestyStyles?.fontFamily,
-      fontWeight: zestyStyles?.fontWeight,
+
+      // Header styles
+      h1: {
+        fontSize: parseInt(styles['font-size-h1']) || 24,
+        color: headingsColor,
+        fontWeight: headingFontWeight,
+      },
+      h2: {
+        fontSize: parseInt(styles['font-size-h2']) || 19,
+        color: headingsColor,
+        fontWeight: headingFontWeight,
+      },
+      h3: {
+        fontSize: parseInt(styles['font-size-h3']) || 17,
+        color: headingsColor,
+        fontWeight: headingFontWeight,
+      },
+      h4: {
+        fontSize: parseInt(styles['font-size-h4']) || 14,
+        color: headingsColor,
+        fontWeight: headingFontWeight,
+      },
+      h5: {
+        fontSize: parseInt(styles['font-size-h5']) || 13,
+        color: headingsColor,
+        fontWeight: headingFontWeight,
+      },
+      h6: {
+        fontSize: parseInt(styles['font-size-h6']) || 50,
+        color: headingsColor,
+        fontWeight: headingFontWeight,
+      },
+
+      //
+      fontSize: parseInt(styles['font-size-base']) || 14,
+      fontFamily: styles['font-family-base'] || 'sans-serif',
+      // fontWeight: styles?.fontWeight,
     },
+    // components: {
+    //   MuiButtonBase: {},
+    // },
   });
 
   return ZestySettingsTheme;
-};
-
-export default ZestyStyleVariables;
+}
