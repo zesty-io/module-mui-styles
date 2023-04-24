@@ -14,7 +14,7 @@ npm run fetch-style
 ## 📃Generated Files
 The following files will be generated with its location folders:
   * **_styleVariables.json_** (📁 _".zesty"_ ) - contains the fetched style variables data from the API.
-  * _**ZestyStyleVariables.js**_ (📁 _"components"_ ) - contains the `createTheme` object from the [Material UI](https://mui.com/material-ui/customization/theming/). MUI theming with instance style variables can be configure in this file.
+  * _**zestyStyleVariables.js**_ (📁 _"components"_ ) - contains the `createTheme` object from the [Material UI](https://mui.com/material-ui/customization/theming/). MUI theming with instance style variables can be configure in this file.
 <br>
 
 ## ⚙️Configuration 
