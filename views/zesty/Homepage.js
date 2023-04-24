@@ -11,7 +11,7 @@ import { CustomTextarea } from 'components/marketing-example/personalization/Cus
 import { CustomText } from 'components/marketing-example/personalization/CustomText';
 import { CustomLink } from 'components/marketing-example/personalization/CustomLink';
 import { CustomImage } from 'components/marketing-example/personalization/CustomImage';
-
+import Example from 'components/Example';
 export default function Homepage({ content }) {
   return (
     <>
@@ -25,7 +25,7 @@ export default function Homepage({ content }) {
             column: CustomColumn,
             row: CustomRow,
             link: CustomLink,
-            design: ZestyTutorial,
+            design: Example,
           }}
         />
       </Box>

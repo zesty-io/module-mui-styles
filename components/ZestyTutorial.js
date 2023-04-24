@@ -253,7 +253,7 @@ export default function ZestyTutorial(props) {
                   <Typography gutterBottom variant="h5" component="div">
                     Community Chat
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.primary">
                     Intereact with the community and Zesty.io developers. Ask
                     questions, share ideas and projects. Click here to be
                     invited.
