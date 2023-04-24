@@ -40,18 +40,10 @@ export default function Example() {
   //Theme colors table
 
   //   Table Data
-  function createData(
-    themeName,
-    zestyStyle,
-    defaultColor,
-    muiRef,
-    description,
-    changeable,
-  ) {
+  function createData(themeName, zestyStyle, muiRef, description, changeable) {
     return {
       themeName,
       zestyStyle,
-      defaultColor,
       muiRef,
       description,
       changeable,
@@ -63,7 +55,6 @@ export default function Example() {
     createData(
       'Primary',
       'brand-primary',
-      '#337ab7',
       'primary.main',
       `Applied to component with "primary.main" color props value`,
       'Yes',
@@ -71,7 +62,7 @@ export default function Example() {
     createData(
       'Secondary',
       'gray-base',
-      '#000000',
+
       'secondary.main',
       `Applied to component with "secondar.main" color props value`,
       'Yes',
@@ -79,7 +70,6 @@ export default function Example() {
     createData(
       'Success',
       'brand-success',
-      '#5cb85c',
       'success.main',
       `Applied to component with "success.main" color props value`,
       'Yes',
@@ -87,7 +77,6 @@ export default function Example() {
     createData(
       'Info',
       'brand-info',
-      '#5bc0de',
       'info.main',
       `Applied to component with "info.main" color props value`,
       'Yes',
@@ -95,7 +84,6 @@ export default function Example() {
     createData(
       'Warning',
       'brand-warning',
-      '#f0ad4e',
       'warning.main',
       `Applied to component with "warning.main" color props value`,
       'Yes',
@@ -103,7 +91,6 @@ export default function Example() {
     createData(
       'Error',
       'brand-danger',
-      '#d9534f',
       'error.main',
       `Applied to component with "error.main" color props value`,
       'Yes',
@@ -125,7 +112,7 @@ export default function Example() {
 
         <Box>
           <Typography variant="h3" component="h2">
-            Theme Colors (Default Zesty Style Variables):
+            MUI Theme Colors mapped with Zesty Style Variables
           </Typography>
           <br />
           <Box>
@@ -135,7 +122,6 @@ export default function Example() {
                   <TableRow>
                     <TableCell>MUI Theme Name</TableCell>
                     <TableCell>Zesty Brand Name</TableCell>
-                    <TableCell>Default Color</TableCell>
                     <TableCell>MUI Reference</TableCell>
                     <TableCell align="center">Description</TableCell>
                   </TableRow>
@@ -162,15 +148,6 @@ export default function Example() {
                           fontSize={12}
                         >
                           @{row.zestyStyle}
-                        </Typography>
-                      </TableCell>
-                      <TableCell>
-                        <Typography
-                          sx={{ color: `${row.themeName.toLowerCase()}.main` }}
-                          fontWeight={600}
-                          fontSize={13}
-                        >
-                          {row.defaultColor}
                         </Typography>
                       </TableCell>
                       <TableCell>

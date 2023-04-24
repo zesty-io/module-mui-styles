@@ -32,9 +32,6 @@ export default function ZestyStyleVariables() {
       error: {
         main: `${styles['brand-danger'] || '#d32f2f'}`,
       },
-      dark: {
-        main: blue[500],
-      },
     },
     typography: {
       // In Chinese and Japanese the characters are usually larger,
