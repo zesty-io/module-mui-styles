@@ -18,7 +18,7 @@ The following files will be generated with its location folders:
 <br>
 
 ## ⚙️Configuration 
-1. ZestyStyleVariable <br>
+1. zestyStyleVariable.js <br>
   > This file should have the code below:
    
    ```javascript
