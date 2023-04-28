@@ -2,7 +2,7 @@
 
 This feature will help to incorporate zesty instance style variables to Material UI Theme.
 
-## ✅Running the script
+## 🔃Running the script
  Upon installing [zesty next starter app](https://github.com/zesty-io/nextjs-starter), the `sync.js` will run for the first time. But there will be always a changes specially in the style variables. Fortunately we can sync the instance styles anytime to next starter app anytime by running the command below to the console.
 
 ```
@@ -39,39 +39,51 @@ e.g:
    > Accessing a style variable and assigning it to MUI theme:
    
    ```javascript
+   import { createTheme } from '@mui/material/styles';
    const styles = require('.zesty/styleVariables') || {};
    
    // customizing MUI theme colors:
-   const ZestySettingsTheme = createTheme({
-     pallete: {
-        primary: {
-           //Accessing the @brand-primary color 
-           main: `${styles['brand-primary']}`
-        }.
-     },
-   
-   });
+   export default function ZestyStyleVariables() {
+    const zestySettingsTheme = createTheme({
+      pallete: {
+         primary: {
+            //Accessing the @brand-primary color 
+            main: `${styles['brand-primary']}`
+         }.
+      },
+
+    });
+    
+    return zestySettingsTheme;
+   }
    ```
    
    > Customizing Header default styles:
    
    ```javascript
-   
+    import { createTheme } from '@mui/material/styles';
     const styles = require('.zesty/styleVariables') || {};
    
    // customizing MUI theme colors:
-   const ZestySettingsTheme = createTheme({
-    typography: {
+   export default function ZestyStyleVariables() {
+    const zestySettingsTheme = createTheme({
+     typography: {
 
-      // Header styles
-      h1: {
-        fontSize: parseInt(styles['font-size-h1']) || 24,
-        },
-      },
-   
-   });
+       // Header styles
+       h1: {
+         fontSize: parseInt(styles['font-size-h1']) || 24,
+         },
+       },
+
+    });
+    
+    return zestySettingsTheme;
+   }
    
    ```
+   
+   
+## ✅Applying the MUI theme configurations
 2. Adding MUI Theme provider
 > In order for the custom theme to work, `ThemeProvider` should be imported in a component or in a top level component file.
 
@@ -124,7 +136,7 @@ export default MyApp;
 
 ```
 
-### 📝 Please take note that the `ThemeProvider` can be imported in any component or can be used in a specific component file only, the example above is just a general example
+### 📝 Please take note that the `ThemeProvider` can be imported exclusively in a specific component, the example above is just a general scenario to apply the theme to the webpage as a whole.
    
 For more details about customizing theme, kindly see in the [MUI Documentation](https://mui.com/material-ui/customization/theming/)
 
