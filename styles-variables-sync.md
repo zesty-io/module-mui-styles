@@ -49,7 +49,7 @@ e.g:
          primary: {
             //Accessing the @brand-primary color 
             main: `${styles['brand-primary']}`
-         }.
+         },
       },
 
     });
