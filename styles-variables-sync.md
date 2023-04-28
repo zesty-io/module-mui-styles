@@ -45,7 +45,7 @@ e.g:
    // customizing MUI theme colors:
    export default function ZestyStyleVariables() {
     const zestySettingsTheme = createTheme({
-      pallete: {
+      palette: {
          primary: {
             //Accessing the @brand-primary color 
             main: `${styles['brand-primary']}`
@@ -106,11 +106,17 @@ After importing, the component should be the child of the `ThemeProvider` compon
 
 <br>
 
+Also do not forget to import the theme configuration file 
+```javascript
+import ZestyStyleVariables from 'components/ZestyStyleVariables';
+```
+<br>
+
 Example of adding `ThemeProvider` in Zesty starter app `App.js` file:
 
 ```javascript
 
-import ZestyStyleVariables from 'components/ZestyStyleVariables'; //Importing the custom theme config from the ZestyStyleVariables.js
+import ZestyStyleVariables from 'components/zestyStyleVariables'; //Importing the custom theme config from the zestyStyleVariables.js
 import { ThemeProvider } from '@mui/material/styles'; // importing ThemeProvider from MUI styles
 
 function MyApp({ Component, pageProps }) {
