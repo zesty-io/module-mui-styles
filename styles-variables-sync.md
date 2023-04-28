@@ -3,30 +3,40 @@
 This feature will help to incorporate zesty instance style variables to Material UI Theme.
 
 ## ✅Running the script
- Once the [zesty next starter app](https://github.com/zesty-io/nextjs-starter) is installed, go to the root directory of the project then run the code below in the console.
+ Upon installing [zesty next starter app](https://github.com/zesty-io/nextjs-starter), the `sync.js` will run for the first time. But there will be always a changes specially in the style variables. Fortunately we can sync the instance styles anytime to next starter app anytime by running the command below to the console.
 
 ```
-npm run fetch-style
+npm run sync
 ```
 
 <br>
 
 ## 📃Generated Files
-The following files will be generated with its location folders:
-  * **_styleVariables.json_** (📁 _".zesty"_ ) - contains the fetched style variables data from the API.
-  * _**zestyStyleVariables.js**_ (📁 _"components"_ ) - contains the `createTheme` object from the [Material UI](https://mui.com/material-ui/customization/theming/). MUI theming with instance style variables can be configure in this file.
+  * **_styleVariables.json_** - located at folder (📁 _".zesty"_ ). It contains the fetched style variables data from the API.
+e.g:
+```javascript
+{
+  "brand-primary": "#337ab7",
+  "brand-success": "#5cb85c",
+  "brand-warning": "#f0ad4e",
+  "brand-danger": "#d9534f",
+  "brand-info": "#5bc0de",
+}
+```
+ 
 <br>
 
 ## ⚙️Configuration 
-1. zestyStyleVariable.js <br>
-  > This file should have the code below:
+1. We should create a file where we can configure the MUI theme customization with instance style variables. In this example the file will be named as:
+ _**zestyStyleVariables.js**_ under folder 📁 _"components"_ :  <br>
    
+   > After creating the file, we should import first the dependency of our zesty styles configuration:
    ```javascript
    import { createTheme } from '@mui/material/styles'; // import the createTheme from MUI
    const styles = require('.zesty/styleVariables') || {}; // assigning the styleVariables.json to the "styles" variable
    ```
    
-   Accessing a style variable and assigning it to MUI theme:
+   > Accessing a style variable and assigning it to MUI theme:
    
    ```javascript
    const styles = require('.zesty/styleVariables') || {};
@@ -43,7 +53,7 @@ The following files will be generated with its location folders:
    });
    ```
    
-   Customizing Header default styles:
+   > Customizing Header default styles:
    
    ```javascript
    
