@@ -1,151 +1,147 @@
-# <img src="https://user-images.githubusercontent.com/729972/155242158-157ca88c-9047-4671-bd09-2bbef7035022.png" width="25" style="margin-bottom:-3px"> Zesty.io + Next.js
+# Zesty styles-variables sync to next starter app
 
-> Quick start [Next.js](https://nextjs.org/) v12 with [Zesty.io]() as a data source
+This feature will help to incorporate zesty instance style variables to Material UI Theme.
 
-## Getting Started
+## 🔃Running the script
 
-0. Requirements
-
-- [Node.js 16](https://nodejs.org/en/)
-- [npm](https://www.npmjs.com/)
-
-1. Install
-
-Add Zesty CLI (you may need to sudo this command)
-```Bash
-npm install -g @zesty-io/cli
-```
-
-Run the Next.js marketing
-```Bash
-npx create-next-app --example https://github.com/zesty-io/nextjs-starter
-```
-
-*The install process will let you use an existing account or create a new. When using an existing account you will be prompted to select from your available instances.*
-
-2. Change directory to your project
-
-```Bash
-# Use the name you chose for your directory
-cd my-app
-```
-
-3. Start development server
-
-```Bash
-npm run dev
-```
-
-4. Open application
-
-open browser to http://localhost:3000/
-
-## Syncing Zesty.io Models
-
-As you develop your Zesty.io instance you will commonly add new content models. In order for new content pages to render in nextjs, there needs to be a relative model component in `views/zesty` to get the lastest models components you can run a script to sync. Do so by running the following command at the root of your project.
+Upon installing [zesty next starter app](https://github.com/zesty-io/nextjs-starter), the `sync.js` will run for the first time. But there will be always a changes specially in the style variables. Fortunately we can sync the instance styles anytime to next starter app anytime by running the command below to the console.
 
 ```
 npm run sync
 ```
 
-This sync script will create new files where needed, but will not overwrite existing files.
+<br>
 
-## Working with Zesty View Components
+## 📃Generated Files
 
-After a `npm run sync` a view component is created for each Zesty Content Model in the `views/zesty` directory. Zesty Content Items that have URL will automatically resolve to the component in that `views` directory that is assocaited with the content models name.
+- **_styleVariables.json_** - located at folder (📁 _".zesty"_ ). It contains the fetched style variables data from the API.
+  e.g:
 
-Each Component loads with a {content} object, this object is a direct feed of that URLs ?toJSON response.  [Read about toJSON](https://zesty.org/services/web-engine/introduction-to-parsley/parsley-index#tojson)
-
-![Diagram showing toJSON data fetching](https://jvsr216n.media.zestyio.com/nextjs-external-delivery-architecture.jpg)
-
-
-# Custom Integration and the next.config.js file
-
-Here is an explanation of the next.js zesty integration, use this information to setup a custom integration or to modify this marketing in your own project. 
-
-**Required files:**
-
-These files should only be modified for customize integrations.
-
-* `pages/[...slug].js` - this is a dynamic catch all routes file, hard written paths and files will superceed it. This file will look for content in zesty relative to the requested path `/about/` for example looks for content in zesty that matches the `/about/` path, if it fails to find content it will 404. Instead of 404ing, you can code this to default to your base application component. 
-* `pages/index.js` - if you intent to run zesty to power you homepage, you need index.js to reference the [...slug].js file
-* `lib/sync.js` this file read the next.config.js file to create new views/zesty/ components to map to the connected instance's content models it can be modified to ignore specific models. Sync will attempt to overwrite your next.config.js file if there are missing values.
-* `lib/ZestyView.js` the dynamic component which autoloads the relative content model components from views/zesty based on the url path in the request.
-* `lib/api.js` this file includes the dynamic fetch request to get zesty content and navigation bsed on the relative url path form the request.
-* `components/ZestyHead.js` Used by ZestyView.js, an optional `<head>` component that dybamic sets up meta data for zesty content items that have pages in nextjs.
-
-**Optional Files**
-
-These files can be removed if there references are removed.
-
-* `components/Header.js` marketing example file, not needed.
-* `components/Footer.js` marketing example file, not needed.
-* `components/ZestyTutorial.js` marketing example file, not needed.
-* `lib/zestyLink.js` an optional component which it used to make URL path lookup given a relative content ZUID. It requires `zestyURL+'/-/headless/routing.json` as the nav array, and content item ZUID e.g. `7-xyz-xyz`.  
-* `layout/` this directory is used to create a generic page layouts, and can be removed or customized.
-
-
-### next.config.js
-
-In order for the integration to work, you need `trailingSlash: true` and the `env.zesty: {}` object. See the below example.
-
-```next.config.js
-// generated by lib/sync.js
-module.exports = {
-  trailingSlash: true,
-  eslint: {
-    ignoreDuringBuilds: true
-  },
-  env: {
-      zesty: {
-          instance_zuid: "", // zesty unique id of content instance
-          stage: "", // e.g. https://XYZ-dev.webengine.zesty.io
-          production: "", // e.g. https://www.acme.com
-          stage_password: "",
-          src_dir: "", // where the next project has pages, components, etc folders
-          options: {
-            skip_config_overwrite: false, // for setups with custom config files, after initial setup of the env.zesty object, set to true
-            model_ignore_list: [
-              '6-xyz-xyz',
-              '6-xyz-xyz' // an array of models ZUIDs to ignore when creating component files in views/zesty
-            ]
-          }
-
-      }
-  }
+```javascript
+{
+  "brand-primary": "#337ab7",
+  "brand-success": "#5cb85c",
+  "brand-warning": "#f0ad4e",
+  "brand-danger": "#d9534f",
+  "brand-info": "#5bc0de",
 }
 ```
 
-*If trailingSlash needs to be false in your project, then the `lib/api.js` fetch call will need to modifed to append a trailing slash. In this scenario, webengine preview proxying your nextjs app will fail.*
+<br>
 
-# How to uninstall the Starting Tutorial
+## ⚙️Configuration
 
-The starting tutorial comes with a couple packages and components
+1. We should create a file where we can configure the MUI theme customization with instance style variables. In this example the file will be named as:
+   _**zestyStyleVariables.js**_ under folder 📁 _"components"_ : <br>
 
-* MUI (mui.com)
-* Material Icons
-* views/tutorials (directory)
+   > After creating the file, we should import first the dependency of our zesty styles configuration:
 
-### Uninstall Material UI (MUI)
+   ```javascript
+   import { createTheme } from "@mui/material/styles"; // import the createTheme from MUI
+   const styles = require(".zesty/styleVariables") || {}; // assigning the styleVariables.json to the "styles" variable
+   ```
 
-```bash
-npm uninstall @mui/material @mui/styled-engine-sc styled-components
+   > Accessing a style variable and assigning it to MUI theme:
+
+   ```javascript
+   import { createTheme } from "@mui/material/styles";
+   const styles = require(".zesty/styleVariables") || {};
+
+   // customizing MUI theme colors:
+   export default function ZestyStyleVariables() {
+     const zestySettingsTheme = createTheme({
+       palette: {
+         primary: {
+           //Accessing the @brand-primary color
+           main: `${styles["brand-primary"]}`,
+         },
+       },
+     });
+
+     return zestySettingsTheme;
+   }
+   ```
+
+   > Customizing Header default styles:
+
+   ```javascript
+   import { createTheme } from "@mui/material/styles";
+   const styles = require(".zesty/styleVariables") || {};
+
+   // customizing MUI theme colors:
+   export default function ZestyStyleVariables() {
+     const zestySettingsTheme = createTheme({
+       typography: {
+         // Header styles
+         h1: {
+           fontSize: parseInt(styles["font-size-h1"]) || 24,
+         },
+       },
+     });
+
+     return zestySettingsTheme;
+   }
+   ```
+
+## ✅Applying the MUI theme configurations
+
+2. Adding MUI Theme provider
+   > In order for the custom theme to work, `ThemeProvider` should be imported in a component or in a top level component file.
+
+Importing the MUI `ThemeProvider` :
+
+```javascript
+import { ThemeProvider } from "@mui/material/styles";
 ```
 
-### Uninstall Material Icons
+<br>
 
-```bash
-npm uninstall @mui/icons-material
+After importing, the component should be the child of the `ThemeProvider` component and use `ZestyStyleVariables` as the theme prop value.
+
+```javascript
+<ThemeProvider theme={ZestyStyleVariables()}>
+  <Component />
+</ThemeProvider>
 ```
 
-### Delete Tutorials
+<br>
 
-From terminal change directory to project root. 
+Also do not forget to import the theme configuration file
 
-```bash
-rm -Rf views/tutorials
+```javascript
+import ZestyStyleVariables from "components/ZestyStyleVariables";
 ```
 
-Open `pages/index.js` delete the line `import Tutorial from 'views/tutorial/` and the line `<Tutorial/>`
+<br>
 
+Example of adding `ThemeProvider` in Zesty starter app `App.js` file:
 
+```javascript
+import ZestyStyleVariables from "components/zestyStyleVariables"; //Importing the custom theme config from the zestyStyleVariables.js
+import { ThemeProvider } from "@mui/material/styles"; // importing ThemeProvider from MUI styles
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      {/* logic to run zesty head if it detects zesty meta data patterns in props, else load alternate head for you to edit */}
+      {(pageProps?.meta?.web && <ZestyHead content={pageProps} />) || (
+        <Head>
+          <meta charSet="utf-8" />
+          <title>Zesty.io Next.js Marketing Technology Example Starter</title>
+        </Head>
+      )}
+
+      {/* MUI customized theme will start to effect here */}
+      <ThemeProvider theme={ZestyStyleVariables()}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
+  );
+}
+
+export default MyApp;
+```
+
+### 📝 Please take note that the `ThemeProvider` can be imported exclusively in a specific component, the example above is just a general scenario to apply the theme to the webpage as a whole.
+
+For more details about customizing theme, kindly see in the [MUI Documentation](https://mui.com/material-ui/customization/theming/)
