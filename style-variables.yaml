@@ -16,7 +16,7 @@
     category: 2
     options: "{\"error\":\"Error\",\"info\":\"Info\",\"primary\":\"Primary\",\"secondary\":\"Secondary\",\"success\":\"Success\",\"warning\":\"Warning\"}"
   - referenceName: "brand-secondary"
-    name: "Brand Secondary COlor"
+    name: "Brand Secondary Color"
     sort: 2
     type: "color"
     value: "#6c757d"
