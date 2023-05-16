@@ -144,4 +144,6 @@ export default MyApp;
 
 ### 📝 Please take note that the `ThemeProvider` can be imported exclusively in a specific component, the example above is just a general scenario to apply the theme to the webpage as a whole.
 
-For more details about customizing theme, kindly see in the [MUI Documentation](https://mui.com/material-ui/customization/theming/)
+For more details about customizing theme, kindly see in the [MUI Documentation](https://mui.com/material-ui/customization/theming/).
+
+### Please also see the [example component sink](https://github.com/zesty-io/example-mui-styles) of the MUI-Styles
