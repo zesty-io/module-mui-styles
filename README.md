@@ -1,4 +1,4 @@
-# Zesty styles-variables sync to next starter app
+# Zesty styles-variables with MUI class names
 
 This feature will help to incorporate zesty instance style variables to Material UI Theme.
 
