@@ -1,0 +1,81 @@
+
+  - referenceName: "brand-primary"
+    name: "Brand Primary Color"
+    sort: 1
+    type: "color"
+    value: "#0d6efd"
+    description: "A theme color with a color attribute : primary.main"
+    category: 1
+    options: null
+  - referenceName: "headings-custom-color"
+    name: "Header Color"
+    sort: 1
+    type: "dropdown"
+    value: "primary"
+    description: "This is the color used for all Header elements"
+    category: 2
+    options: "{\"error\":\"Error\",\"info\":\"Info\",\"primary\":\"Primary\",\"secondary\":\"Secondary\",\"success\":\"Success\",\"warning\":\"Warning\"}"
+  - referenceName: "brand-secondary"
+    name: "Brand Secondary Color"
+    sort: 2
+    type: "color"
+    value: "#6c757d"
+    description: "A theme color with a color attribute : secondary.main"
+    category: 1
+    options: null
+  - referenceName: "font-size-base"
+    name: "Font Size Base"
+    sort: 2
+    type: "text"
+    value: "1rem"
+    description: "Base font size of all text in every web page of the instance"
+    category: 2
+    options: null
+  - referenceName: "font-weight-base"
+    name: "Font Weight Base"
+    sort: 2
+    type: "text"
+    value: "400"
+    description: "Base font weight of all text, the higher value the more thicker of the text"
+    category: 2
+    options: null
+  - referenceName: "brand-success"
+    name: "Brand Success Color"
+    sort: 3
+    type: "color"
+    value: "#198754"
+    description: "A theme color with a color attribute : success.main"
+    category: 1
+    options: null
+  - referenceName: "font-family-base"
+    name: "Font Family Base"
+    sort: 3
+    type: "font_picker"
+    value: "Open Sans:400"
+    description: "Base font style of all text"
+    category: 2
+    options: null
+  - referenceName: "brand-info"
+    name: "Brand Info Color"
+    sort: 4
+    type: "color"
+    value: "#0dcaf0"
+    description: "A theme color with a color attribute : info.main"
+    category: 1
+    options: null
+  - referenceName: "brand-warning"
+    name: "Brand Warning Color"
+    sort: 7
+    type: "color"
+    value: "#ffc107"
+    description: "A theme color with a color attribute : warning.main"
+    category: 1
+    options: null
+  - referenceName: "brand-danger"
+    name: "Brand Error Color"
+    sort: 8
+    type: "color"
+    value: "#dc3545"
+    description: "A theme color with a color attribute : error.main"
+    category: 1
+    options: null
